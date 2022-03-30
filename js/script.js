@@ -1,9 +1,11 @@
-// Test: "should return a string"
-// code: pigLatin("");
-// Expected Output:""
+// Test: "Should identify a vowel"
+// Code: pigLatin("a");
+// Expected Output: true
 
 function pigLatin(element) {
-return element;
+  if (element === "a") {
+  return true;
+  }
 }
 
-console.log(pigLatin("cat"));
+console.log(pigLatin("a"));
