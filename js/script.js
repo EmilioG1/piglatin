@@ -1,6 +1,6 @@
-// Test: "It should identify if a word begins with a consonant."
-// code: pigLatin("goat");
-// Expected Output: true
+// Test: "if a word begins with a consonant, move it to the back of the word"
+// code pigLatin("checkers")
+// Expected Output: "heckers"
 
 function pigLatin(element) {
   const vowel = ['a', 'e', 'i', 'o', 'u'];
@@ -10,10 +10,12 @@ function pigLatin(element) {
     } else if (element[0] === "q" && element[1] === "u") {
       return element.slice(2, element.length) + "quay";
     } else {
-      return true;
+      return element.slice(1, element.length) + element.slice(0, 1) + "ay";
     }
   }
   return false;
 } 
 
-console.log(pigLatin("crab"));
+$(document).ready(function(){
+  console.log(pigLatin("hello"));
+});
