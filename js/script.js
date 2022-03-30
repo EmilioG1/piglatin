@@ -1,6 +1,6 @@
-// Test: "If a word starts with qu it should move q and u to the end of a word."
+// Test: "It should add ay to the end of a word after moving qu to the end."
 // code: pigLatin("quick");
-// Expected Output: ("ickqu")
+// Expected Output: ("ickquay")
 
 function pigLatin(element) {
   const vowel = ['a', 'e', 'i', 'o', 'u'];
@@ -8,10 +8,10 @@ function pigLatin(element) {
     if (element[0] === vowel[index]) {
       return element + "way";
     } else if (element[0] === "q" && element[1] === "u") {
-      return element.slice(2, element.length) + "qu";
+      return element.slice(2, element.length) + "quay";
     }
   }
   return false;
 } 
 
-console.log(pigLatin("quilt"));
+console.log(pigLatin("quick"));
