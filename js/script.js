@@ -1,6 +1,6 @@
-// Test: "It should add ay to the end of a word after moving qu to the end."
-// code: pigLatin("quick");
-// Expected Output: ("ickquay")
+// Test: "It should identify if a word begins with a consonant."
+// code: pigLatin("goat");
+// Expected Output: true
 
 function pigLatin(element) {
   const vowel = ['a', 'e', 'i', 'o', 'u'];
@@ -9,9 +9,11 @@ function pigLatin(element) {
       return element + "way";
     } else if (element[0] === "q" && element[1] === "u") {
       return element.slice(2, element.length) + "quay";
+    } else {
+      return true;
     }
   }
   return false;
 } 
 
-console.log(pigLatin("quick"));
+console.log(pigLatin("crab"));
