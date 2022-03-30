@@ -7,11 +7,11 @@ Rule 3: if the first consonant include qu move the q and the u to the end and ad
 
 
 Describe: pigLatin();
-Test: "should return an empty string"
+Test: "should return a string"
 code: pigLatin("");
 Expected Output:""
 
-Test: "Should identify a vowel"
+Test: "Should identify the letter a"
 Code: pigLatin("a");
 Expected Output: true
 
@@ -25,7 +25,7 @@ Expected Output: false
 
 Test: "it should identify if the first letter of a word is a vowel"
 code: pigLatin("ant");
-Expect Output: true
+Expected Output: true
 
 Test: "it should identify if the first letter of a word is a vowel if so concat way to the end of the word"
 code: pigLatin("ant");
@@ -39,11 +39,11 @@ Test: "It should identify if q and u are in a word."
 code: pigLatin("squeal");
 Expected Output: true
 
-Test: "It should move q and u to the end of a word."
+Test: "If a word starts with qu it should move q and u to the end of a word."
 code: pigLatin("quick");
 Expected Output: ("ickqu")
 
-Test: "It should add ay to the end of a word."
+Test: "It should add ay to the end of a word after moving qu to the end."
 code: pigLatin("quick");
 Expected Output: ("ickquay")
 
@@ -55,7 +55,7 @@ Test: "if a word begins with a consonant, move it to the back of the word"
 code pigLatin("checkers")
 Expected Output: "heckers"
 
-Test: "If a word begins with multiple consonants move them to the back fo the word"
+Test: "If a word begins with multiple consonants move them to the back of the word"
 code: pigLatin("checkers")
 expected output: "eckersch"
 
