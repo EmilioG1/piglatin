@@ -1,8 +1,6 @@
-// Test: "it should handle multiple words in string for all cases"
-// code: pigLatin("are you cooking quail if so we squeal")
-// expected output:"areway ouyay ookingcay ailquay ifway osay eway quealsay"
+
 function pigLatin(text) {
-  const words = text.trim().split(" ");
+  const words = text.replaceAll(/[.,\/#!?$%\^&\*;:{}=\-_`~()]/g,"").trim().split(" ");
   let latin = [];
   words.forEach(function(element) {
     if (Number(element)){
@@ -10,7 +8,7 @@ function pigLatin(text) {
     } else {
     const vowel = ['a', 'e', 'i', 'o', 'u'];
     const vowelQ = ['a', 'e', 'i', 'o', 'u', 'q'];
-    for (index = 0; index < vowel.length; index++) {
+    for (index = 0; index < element.length; index++) {
       if (vowel.includes(element[0].toLowerCase())) {
         return latin.push(element + "way");
       } else if (element[0].toLowerCase() === "q" && element[1].toLowerCase() === "u") {
@@ -24,8 +22,7 @@ function pigLatin(text) {
   return latin.join(" ");
   }
 
-
 $(document).ready(function(){
-  console.log(pigLatin("Are 2 you?"));
-
+  console.log(pigLatin("Are can't 2 you?"))
 });
+
