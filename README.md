@@ -70,7 +70,7 @@ expected output: "quealsay"
 
 Test: "it should handle multiple words in string for all cases"
 code: pigLatin("are you cooking quail if so we squeal")
-expected output:"areway ouyay ookingcay ailquay ifay osay eway quealsay"
+expected output:"areway ouyay ookingcay ailquay ifway osay eway quealsay"
 
 Describe pigLatinUtility();
 

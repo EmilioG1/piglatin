@@ -1,28 +1,73 @@
+const vowels = ['a', 'e', 'i', 'o', 'u'];
+const vowelQ = ['a', 'e', 'i', 'o', 'u', 'q'];
+
+function pigLatinVowels(words) {
+  for (let i = 0; i < vowels.length; i++){
+    if (words[0].toLowerCase() === vowels[i]){
+      return words;
+    } 
+  } return false;
+}
+
+pigLatinVowels("d");
+
+function pigLatinQu(words) {
+  if(words.slice(0,2).toLowerCase() === "qu") {
+    let wordStart = words.slice(0,2);
+    let wordEnd = words.slice(2);
+    return wordEnd.concat(wordStart);
+  } else {
+    return false;
+  }
+}
+
+function pigLatinConsonants(words) {
+  let wordEnd;
+  let wordStart;
+  for (let i = 0; i < vowelQ.length; i++){
+    wordStart = words.slice(0, i);
+    wordEnd = words.slice(i);
+    if (vowelQ.includes(words[i])) {
+      return wordEnd.concat(wordStart)
+    }
+  }
+}
+
+function pigLatinNumber(words) {
+  if(Number(words)) {
+    return words;
+  }
+}
 
 function pigLatin(text) {
-  const words = text.replaceAll(/[.,\/#!?$%\^&\*;:{}=\-_`~()]/g,"").trim().split(" ");
-  let latin = [];
-  words.forEach(function(element) {
-    if (Number(element)){
-      latin.push(element);
+  let result = [];
+  let words = text.split(" ");
+  // let punc = ["!","?",",",".","@","#","$",";","/",":"]
+  // let wordsNoPunc = words.map(function(element) {
+  //   while (element.includes(
+  // });
+
+
+  words.forEach(function (word) {
+    if(pigLatinNumber(word)) {
+      result.push(pigLatinNumber(word));
+    } else if (pigLatinVowels(word)){
+      result.push(pigLatinVowels(word)+"way");
+    } else if (pigLatinQu(word)){
+      result.push(pigLatinQu(word)+"ay");
     } else {
-    const vowel = ['a', 'e', 'i', 'o', 'u'];
-    const vowelQ = ['a', 'e', 'i', 'o', 'u', 'q'];
-    for (index = 0; index < element.length; index++) {
-      if (vowel.includes(element[0].toLowerCase())) {
-        return latin.push(element + "way");
-      } else if (element[0].toLowerCase() === "q" && element[1].toLowerCase() === "u") {
-        return latin.push(element.slice(2, element.length) + "quay");
-      } else if (vowelQ.includes(element[index].toLowerCase())) {
-        return latin.push(element.slice(index, element.length) + element.slice(0, index) + "ay");
-      } 
-    } 
-  }
-   });
-  return latin.join(" ");
-  }
+      result.push(pigLatinConsonants(word)+"ay");
+    }
 
-$(document).ready(function(){
-  console.log(pigLatin("Are can't 2 you?"))
-});
+  });
+  return result.join(" ");
+}
+ 
+console.log(pigLatin("squeal?!"));
 
+/*
+Test: "it should handle multiple words in string for all cases"
+code: pigLatin("are you cooking quail if so we squeal")
+expected output:"areway ouyay ookingcay ailquay ifway osay eway quealsay"
+
+*/
